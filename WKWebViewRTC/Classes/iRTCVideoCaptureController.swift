@@ -60,7 +60,7 @@ extension RTCMediaStreamTrack {
 	}
 }
 
-class iRTCVideoCaptureController : NSObject {
+public class iRTCVideoCaptureController : NSObject {
 	
 	private let DEFAULT_HEIGHT : Int32 = 480
 	private let DEFAULT_WIDTH : Int32 = 640
@@ -154,7 +154,7 @@ class iRTCVideoCaptureController : NSObject {
 		// Stop previous capture in case of setConstraints, followed by startCapture
 		// aka future applyConstraints
 		if (isCapturing) {
-			stopCapture();
+//			stopCapture();
 		}
 		
 		if (device == nil) {
@@ -180,7 +180,7 @@ class iRTCVideoCaptureController : NSObject {
 		return true;
 	}
 	
-	func stopCapture() {
+	public func stopCapture() {
 		// TODO: stopCaptureWithCompletionHandler with DispatchSemaphore
 		if (isCapturing) {
 			capturer.stopCapture()
@@ -307,7 +307,7 @@ class iRTCVideoCaptureController : NSObject {
 	func switchCamera() -> Bool {
 		
 		if (self.capturer.captureSession.isRunning) {
-			self.capturer.stopCapture()
+//			self.capturer.stopCapture()
 		}
 
 		self.device = self.findAlternativeDevicePosition(currentDevice: self.device)

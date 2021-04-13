@@ -16,22 +16,20 @@ public class WKWebViewRTC : NSObject {
 	// RTCPeerConnectionFactory single instance.
 	var rtcPeerConnectionFactory: RTCPeerConnectionFactory!
 	// Single PluginGetUserMedia instance.
-	var pluginGetUserMedia: iGetUserMedia!
+	public var pluginGetUserMedia: iGetUserMedia!
 	// PluginRTCPeerConnection dictionary.
 	var pluginRTCPeerConnections: [Int : iRTCPeerConnection]!
 	// PluginMediaStream dictionary.
-	var pluginMediaStreams: [String : iMediaStream]!
+    var pluginMediaStreams: [String : iMediaStream]!
 	// PluginMediaStreamTrack dictionary.
-	var pluginMediaStreamTracks: [String : iMediaStreamTrack]!
+	public var pluginMediaStreamTracks: [String : iMediaStreamTrack]!
 	// PluginMediaStreamRenderer dictionary.
 	var pluginMediaStreamRenderers: [Int : iMediaStreamRenderer]!
 	// Dispatch queue for serial operations.
 	var queue: DispatchQueue!
 	// Auto selecting output speaker
 	var audioOutputController: iRTCAudioController!
-    
     var webView : WKWebView?
-    var contentController: WKUserContentController?
     
 
 	// This is just called if <param name="onload" value="true" /> in plugin.xml.
@@ -53,7 +51,7 @@ public class WKWebViewRTC : NSObject {
         if let path = Bundle(for: type(of: self)).path(forResource: "jsWKWebViewRTC", ofType: "js") {
             if let bindingJS = try? String(contentsOfFile: path, encoding: .utf8) {
                 let script = WKUserScript(source: bindingJS, injectionTime: .atDocumentStart, forMainFrameOnly: false)
-                self.contentController?.addUserScript(script)
+                contentController?.addUserScript(script)
             }
         }
 		else {
@@ -109,13 +107,6 @@ public class WKWebViewRTC : NSObject {
 		}
 	}
 
-    public func dispose() {
-        self.cleanup()
-        
-        self.contentController?.removeAllUserScripts()
-        self.webView = nil
-    }
-    
 	@objc(onReset) func onReset() {
 		NSLog("WKWebViewRTC#onReset() | doing nothing")
 		cleanup();

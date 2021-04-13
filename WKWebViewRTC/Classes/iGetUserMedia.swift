@@ -11,9 +11,12 @@ import Foundation
 import AVFoundation
 import WebRTC
 
-class iGetUserMedia {
+public class iGetUserMedia {
 
 	var rtcPeerConnectionFactory: RTCPeerConnectionFactory
+    
+    public var currentVideoStreamID: String?
+    public var currentAudioStreamID: String?
 
 	init(rtcPeerConnectionFactory: RTCPeerConnectionFactory) {
 		NSLog("iGetUserMedia#init()")
@@ -96,7 +99,7 @@ class iGetUserMedia {
 
 		rtcMediaStream = self.rtcPeerConnectionFactory.mediaStream(withStreamId: UUID().uuidString)
 
-		if videoRequested {
+		if videoRequested && currentVideoStreamID == nil {
 			
 			NSLog("iGetUserMedia#call() | video requested")
 
@@ -143,11 +146,16 @@ class iGetUserMedia {
 			if let device = rtcVideoTrack!.videoCaptureController?.device {
 				rtcVideoTrack!.capabilities["deviceId"] = device.uniqueID
 			}
+            
+            if currentVideoStreamID == nil {
+                currentVideoStreamID = rtcVideoTrack?.trackId
+                rtcMediaStream.addVideoTrack(rtcVideoTrack!)
+            }
 
-			rtcMediaStream.addVideoTrack(rtcVideoTrack!)
+            
 		}
 		
-		if audioRequested == true {
+		if audioRequested == true && currentAudioStreamID == nil {
 			
 			NSLog("iGetUserMedia#call() | audio requested")
 			
@@ -170,7 +178,13 @@ class iGetUserMedia {
 			}
 
 			rtcAudioTrack = self.rtcPeerConnectionFactory.audioTrack(withTrackId: UUID().uuidString)
-			rtcMediaStream.addAudioTrack(rtcAudioTrack!)
+            
+            if currentAudioStreamID == nil {
+                currentAudioStreamID = rtcAudioTrack?.trackId
+                rtcMediaStream.addAudioTrack(rtcAudioTrack!)
+            }
+            
+			
 
 			if audioDeviceId == "default" {
 				audioDeviceId = "Built-In Microphone"

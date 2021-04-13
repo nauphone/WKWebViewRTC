@@ -14,8 +14,8 @@ class iMediaStream : NSObject {
 
 	var rtcMediaStream: RTCMediaStream
 	var id: String
-	var audioTracks: [String : iMediaStreamTrack] = [:]
-	var videoTracks: [String : iMediaStreamTrack] = [:]
+	public var audioTracks: [String : iMediaStreamTrack] = [:]
+	public var videoTracks: [String : iMediaStreamTrack] = [:]
 	var eventListener: ((_ data: NSDictionary) -> Void)?
 	var eventListenerForAddTrack: ((_ pluginMediaStreamTrack: iMediaStreamTrack) -> Void)?
 	var eventListenerForRemoveTrack: ((_ pluginMediaStreamTrack: iMediaStreamTrack) -> Void)?

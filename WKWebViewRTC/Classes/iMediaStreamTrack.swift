@@ -10,7 +10,7 @@
 import Foundation
 import WebRTC
 
-class iMediaStreamTrack : NSObject {
+public class iMediaStreamTrack : NSObject {
 	var rtcMediaStreamTrack: RTCMediaStreamTrack
 	var id: String
 	var kind: String
@@ -19,7 +19,7 @@ class iMediaStreamTrack : NSObject {
 	var lostStates = Array<String>()
 	var renders: [String : iMediaStreamRenderer]
 
-	init(rtcMediaStreamTrack: RTCMediaStreamTrack, trackId: String? = nil) {
+	public init(rtcMediaStreamTrack: RTCMediaStreamTrack, trackId: String? = nil) {
 		NSLog("iMediaStreamTrack#init()")
 
 		self.rtcMediaStreamTrack = rtcMediaStreamTrack
@@ -115,9 +115,13 @@ class iMediaStreamTrack : NSObject {
 		}
 	}
 
-	func switchCamera() {
-		self.rtcMediaStreamTrack.videoCaptureController?.switchCamera()
+	public func switchCamera() {
+        self.rtcMediaStreamTrack.videoCaptureController?.switchCamera()
 	}
+    
+    public func stopCapture() {
+        self.rtcMediaStreamTrack.videoCaptureController?.stopCapture()
+    }
 
 	func registerRender(render: iMediaStreamRenderer) {
 		if let exist = self.renders[render.id] {
