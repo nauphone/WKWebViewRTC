@@ -17,7 +17,7 @@ public class iMediaStreamTrack : NSObject {
 	var eventListener: ((_ data: NSDictionary) -> Void)?
 	var eventListenerForEnded: (() -> Void)?
 	var lostStates = Array<String>()
-	var renders: [String : iMediaStreamRenderer]
+	public var renders: [String : iMediaStreamRenderer]
 
 	public init(rtcMediaStreamTrack: RTCMediaStreamTrack, trackId: String? = nil) {
 		NSLog("iMediaStreamTrack#init()")
@@ -128,6 +128,7 @@ public class iMediaStreamTrack : NSObject {
 			_ = exist
 		} else {
 			self.renders[render.id] = render
+            render.mirrorView(mirrored: true)
 		}
 	}
 

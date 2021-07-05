@@ -12,6 +12,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		B089A5820AAD42D0506F1DFA /* Pods_WKWebViewRTC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C80C8D2E84C6908728F48ABB /* Pods_WKWebViewRTC_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8AEFE6B0E7BA7E2E33BE4AAE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A0EDBD4CCC0BEDDAEE236367 /* Pods-WKWebViewRTC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WKWebViewRTC_Example.release.xcconfig"; path = "Target Support Files/Pods-WKWebViewRTC_Example/Pods-WKWebViewRTC_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B35BA54F2CDD708693E71D05 /* WKWebViewRTC.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WKWebViewRTC.podspec; path = ../WKWebViewRTC.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C80C8D2E84C6908728F48ABB /* Pods_WKWebViewRTC_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WKWebViewRTC_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB050538E6A08CA58E6DAF4E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EE6CE03A4ED4077B0CE8B3D6 /* Pods-WKWebViewRTC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WKWebViewRTC_Example.debug.xcconfig"; path = "Target Support Files/Pods-WKWebViewRTC_Example/Pods-WKWebViewRTC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B089A5820AAD42D0506F1DFA /* Pods_WKWebViewRTC_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				081BDE7624D12628001896C7 /* WKWebViewRTC.framework */,
+				C80C8D2E84C6908728F48ABB /* Pods_WKWebViewRTC_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

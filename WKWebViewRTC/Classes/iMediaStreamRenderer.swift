@@ -11,7 +11,7 @@ import Foundation
 import AVFoundation
 import WebRTC
 
-class iMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
+public class iMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 	
 	var id: String
 	var eventListener: (_ data: NSDictionary) -> Void
@@ -230,11 +230,11 @@ class iMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 			//self.webView?.bringSubview(toFront: self.elementView)
 		}
 
-		if !mirrored {
-			self.elementView.transform = CGAffineTransform.identity
-		} else {
-			self.elementView.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-		}
+//		if !mirrored {
+//			self.elementView.transform = CGAffineTransform.identity
+//		} else {
+//			self.elementView.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+//		}
 
 		if clip {
 			self.elementView.clipsToBounds = true
@@ -247,6 +247,14 @@ class iMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 //		let color = UIColor(red: rgb[0], green: rgb[1], blue: rgb[2], alpha: 1)
 //		self.elementView.backgroundColor = color
 	}
+    
+    public func mirrorView(mirrored: Bool) {
+        if !mirrored {
+            self.elementView.transform = CGAffineTransform.identity
+        } else {
+            self.elementView.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        }
+    }
 	
 	func save(callback: (_ data: String) -> Void,
 			  errback: (_ error: String) -> Void) {
@@ -296,7 +304,7 @@ class iMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 	 * Methods inherited from RTCEAGLVideoViewDelegate.
 	 */
 	
-	func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
+	public func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
 	
 		NSLog("iMediaStreamRenderer | video size changed [width:%@, height:%@]",
 			String(describing: size.width), String(describing: size.height))
