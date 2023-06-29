@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nauphone/WKWebViewRTC",
       "state" : {
-        "revision" : "e88d0879ba98a15e095c4fead2cb3894de4f8ba5",
-        "version" : "0.6.0"
+        "revision" : "9bc9da3768e6d5d50c8a4828c3776c9cd2f128d0",
+        "version" : "0.6.1"
       }
     }
   ],
